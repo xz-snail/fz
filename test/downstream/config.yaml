@@ -1,0 +1,4 @@
+# 下游 mock 配置：接收 fz 转发的增量、全量、重定向规则。
+# 运行（仓库根目录）：go run ./test/downstream
+addr: ":8090" # 监听地址，需与 fz 的 rule_increment_url、rule_upgrade_url、upgrade_redirect_url 对应
+fail: false # true 时所有接口返回业务失败，用于验证 fz 的失败累计与重试

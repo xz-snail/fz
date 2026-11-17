@@ -1,0 +1,9 @@
+2026-10-21T00:07:46.899+0800	info	jobs/status_report.go:57	status report job succeeded	{"response": {"body":true,"code":200,"message":"成功","timestamp":1792512466}}
+2026-10-21T01:47:46.980+0800	info	jobs/status_report.go:57	status report job succeeded	{"response": {"body":true,"code":200,"message":"成功","timestamp":1792518466}}
+2026-10-21T03:27:47.238+0800	info	jobs/status_report.go:57	status report job succeeded	{"response": {"body":true,"code":200,"message":"成功","timestamp":1792524467}}
+2026-10-21T05:07:47.341+0800	info	jobs/status_report.go:57	status report job succeeded	{"response": {"body":true,"code":200,"message":"成功","timestamp":1792530467}}
+2026-10-21T06:47:47.511+0800	info	jobs/status_report.go:57	status report job succeeded	{"response": {"body":true,"code":200,"message":"成功","timestamp":1792536467}}
+2026-10-21T08:27:47.679+0800	info	jobs/status_report.go:57	status report job succeeded	{"response": {"body":true,"code":200,"message":"成功","timestamp":1792542467}}
+2026-10-21T10:07:47.807+0800	info	jobs/status_report.go:57	status report job succeeded	{"response": {"body":true,"code":200,"message":"成功","timestamp":1792548467}}
+2026-10-21T10:34:46.289+0800	info	core/server.go:55	shutdown signal received
+2026-10-21T10:34:46.290+0800	info	core/server.go:69	server shutdown complete

@@ -1,0 +1,3 @@
+# 上游 mock 配置：接收 fz 上报（心跳、全量规则消费反馈）。
+# 运行（仓库根目录）：go run ./test/upstream
+addr: ":8089" # 监听地址，需与 fz 的 status_report_url、upgrade_report_url 对应

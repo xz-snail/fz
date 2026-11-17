@@ -1,0 +1,2 @@
+2026-11-16T14:28:04.278+0800	error	core/server.go:75	server stopped	{"error": "listen tcp 0.0.0.0:8018: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+2026-11-16T14:28:04.278+0800	fatal	server/main.go:29	server stopped with error	{"error": "listen tcp 0.0.0.0:8018: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}

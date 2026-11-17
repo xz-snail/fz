@@ -1,0 +1,48 @@
+server:
+  host: "0.0.0.0" # 监听地址，0.0.0.0 表示所有网卡；仅本机访问改为 127.0.0.1
+  port: 8018 # 监听端口
+  read_timeout: "15s" # 读请求超时，客户端上传慢会断开
+  write_timeout: "60s" # 写响应超时，需大于最大处理耗时
+  shutdown_timeout: "10s" # 优雅关闭超时，超时后强制退出
+  max_body_size_mb: 100 # 请求体上限（MB），0 表示不限制
+
+log:
+  directory: "logs" # 日志根目录，按日期写 logs/YYYY-MM-DD/info.log、error.log
+  logInConsole: false # 是否同时输出到控制台，后台运行可关闭
+  ginRequests: true # 是否记录 HTTP 请求日志
+  level: "info" # 日志级别：debug / info
+  rotation:
+    maxSizeMB: 10 # 单个日志文件超过后切割，旧文件加时间后缀
+
+sftp:
+  download_dir: "D:/WWW/ctaf/fz/download" # 规则文件下载后的本地保存目录
+  download_url_prefix: "sftp://user:password@127.0.0.1:22/data/sftp/tmp/rule" # 转发下游的文件地址前缀，与文件名拼接
+  dir_mode: "0755" # 下载目录不存在时创建用的权限
+  timeout: "120s" # SFTP 连接和下载超时
+  host_key_fingerprint: "" # SFTP 主机 key 指纹（SHA256:...），留空须开启下方跳过校验
+  insecure_skip_host_key_check: true # 跳过主机 key 校验，仅建议开发环境使用
+  rule_download:
+    enabled: true # 是否启用规则定时下载
+    interval: "30s" # 下载检查间隔，支持 s/m/h 可组合；上游非秒级更新建议放宽到 1m 以上
+
+clean_log:
+  enabled: true # 是否启用日志清理
+  interval: "02:00" # 每天凌晨 2 点执行，格式 HH:MM（24 小时制、本地时区）
+  targets:
+    - path: "D:/WWW/ctaf/fz/logs" # 要清理的目录
+      max_age: "48h" # 文件修改时间超过 48h 删除，清空的子目录一并移除，支持 s/m/h 可组合
+
+status_report:
+  enabled: true # 是否启用定时心跳上报
+  interval: "1m" # 上报间隔，1 分钟一次；支持 s/m/h 可组合
+
+remote_apis:
+  status_report_url: "http://127.0.0.1:8089/statusreport" # 心跳上报转发地址
+  rule_increment_url: "http://127.0.0.1:8090/rule/increment" # 增量规则转发地址
+  rule_upgrade_url: "http://127.0.0.1:8090/rule/upgrade" # 全量规则下发转发地址
+  upgrade_report_url: "http://127.0.0.1:8089/upgrade/report" # 全量规则消费反馈转发地址
+  upgrade_redirect_url: "http://127.0.0.1:8090/upgrade/redirect" # 重定向规则转发地址
+  timeout: "10m" # 转发请求超时
+
+device:
+  sid: "310000AC001" # 本设备标识，随上报/转发带给上游
